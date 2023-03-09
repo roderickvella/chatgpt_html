@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "ChatGPT-Html",
+  "version": "1.0",
+  "description": "Download as html the chat conversation",
+  "permissions": [
+    "tabs",
+    "https://chat.openai.com/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_icon": "icon.png"
+  }
+}
