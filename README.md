@@ -13,4 +13,3 @@
 ## Video Demonstration
 [![ChatGPT HTML](https://i.imgur.com/HVfrmpf.png)](https://www.youtube.com/watch?v=cwDL3E7AJs4 "ChatGPT HTML")
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cwDL3E7AJs4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
