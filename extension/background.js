@@ -6,7 +6,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     }, function(result) {
 
       mainElement = result[0];
-      console.log(mainElement);
+      //console.log(mainElement);
       const imageRegex = /<img\s+[^>]*src=["'][^"']*(image\?url)[^"']*["'][^>]*>/gi;
       const mainContentsWithoutImages = mainElement.replace(imageRegex, '');
 
@@ -21,6 +21,16 @@ chrome.browserAction.onClicked.addListener(function (tab) {
       // Delete buttons with class "cursor-pointer"
       const cursorPointerButtonRegex = /<button\s+[^>]*class=["'][^"']*cursor-pointer[^"']*["'][^>]*>[\s\S]*?<\/button>/gi;
       const mainContentsWithoutCursorPointerButtons = mainContentsWithoutForms.replace(cursorPointerButtonRegex, '');
+
+      //Remove dark mode
+      // Match div elements with class dark:bg-gray-800
+      const darkGrayDivRegex = /<div\s+[^>]*class=["'][^"']*dark:bg-gray-800[^"']*["'][^>]*>/gi;
+
+      // Replace the class of the matched div elements with the new class
+      const mainContentsWithNewClass = mainContentsWithoutCursorPointerButtons.replace(darkGrayDivRegex, (match) => {
+        return match.replace(/dark:bg-gray-800/gi, 'dark:bg-white');
+      });
+
 
       // Create a new HTML document
       const newDoc = document.implementation.createHTMLDocument();
@@ -40,7 +50,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
       headElement.appendChild(tailwindScript);
 
       // Add main contents without cursor-pointer buttons to body element
-      bodyElement.innerHTML = mainContentsWithoutCursorPointerButtons;
+      bodyElement.innerHTML = mainContentsWithNewClass;
 
       // Add script tag to body element
       const scriptElement = newDoc.createElement('script');
